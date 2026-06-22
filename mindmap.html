@@ -3,17 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hi! Fly Guy 思维导图 · 小姨英语教育</title>
+<title>Fly Guy 系列人物图谱 · 小姨英语教育</title>
 <style>
-  :root{
-    --ink:#33372c; --blue:#4fc3f7; --green:#7cb342; --orange:#ffb300;
-    --purple:#ab47bc; --pink:#ff7a6b; --teal:#26a69a; --center:#558b2f;
-  }
+  :root{--ink:#33372c;--center:#558b2f;}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);
     background:radial-gradient(circle at 50% 40%,#fbfff2,#e9f7ec);min-height:100vh}
   .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
-    padding:14px 20px;background:linear-gradient(135deg,var(--green),var(--center));color:#fff}
+    padding:14px 20px;background:linear-gradient(135deg,#7cb342,var(--center));color:#fff}
   .topbar h1{font-size:20px}
   .topbar .btns{display:flex;gap:8px}
   .topbar a,.topbar button{border:none;cursor:pointer;font-weight:700;font-size:14px;text-decoration:none;
@@ -21,124 +18,149 @@
   .hint{text-align:center;color:#7a8068;font-size:13px;padding:10px}
 
   .stage-wrap{display:flex;justify-content:center;padding:0 12px 40px}
-  .stage{position:relative;width:1200px;height:820px;max-width:100%}
+  .stage{position:relative;width:1320px;height:940px;max-width:100%}
   svg.links{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible}
 
-  .node{position:absolute;transform:translate(-50%,-50%);z-index:2;border-radius:18px;
-    box-shadow:0 5px 0 rgba(0,0,0,.10),0 10px 22px rgba(0,0,0,.12);padding:12px 16px;background:#fff;
-    border:3px solid #ddd;width:248px}
-  .node h3{font-size:17px;display:flex;align-items:center;gap:6px;margin-bottom:6px}
-  .node ul{list-style:none;font-size:13px;line-height:1.65}
-  .node li{padding-left:14px;position:relative;color:#4a4f40}
+  .node{position:absolute;transform:translate(-50%,-50%);z-index:2;border-radius:16px;
+    box-shadow:0 5px 0 rgba(0,0,0,.08),0 9px 20px rgba(0,0,0,.10);padding:11px 14px;background:#fff;
+    border:3px solid #ddd;width:250px}
+  .node h3{font-size:16px;display:flex;align-items:center;gap:6px;margin-bottom:5px}
+  .node ul{list-style:none;font-size:12.5px;line-height:1.55}
+  .node li{padding-left:13px;position:relative;color:#4a4f40;margin:2px 0}
   .node li::before{content:"•";position:absolute;left:0;font-weight:800}
+  .node .bk{color:#aab09a;font-size:11px}
 
-  .center{width:200px;height:200px;border-radius:50%;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;text-align:center;color:#fff;
-    background:radial-gradient(circle at 35% 30%,#8bc34a,var(--center));border:6px solid #fff;
+  .center{width:210px;height:210px;border-radius:50%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;color:#fff;padding:0;
+    background:radial-gradient(circle at 35% 30%,#9ccc65,var(--center));border:6px solid #fff;
     box-shadow:0 8px 0 rgba(0,0,0,.12),0 16px 34px rgba(0,0,0,.18)}
-  .center .fly{font-size:54px;line-height:1}
-  .center .t1{font-size:22px;font-weight:800;margin-top:4px}
-  .center .t2{font-size:12px;opacity:.92;margin-top:2px}
+  .center .fly{font-size:52px;line-height:1}
+  .center .t1{font-size:21px;font-weight:800;margin-top:2px}
+  .center .t2{font-size:14px;font-weight:700;opacity:.95}
+  .center .t3{font-size:11px;opacity:.85;margin-top:3px}
 
-  .n-blue{border-color:var(--blue)} .n-blue h3{color:#0277bd}
-  .n-green{border-color:var(--green)} .n-green h3{color:var(--center)}
-  .n-orange{border-color:var(--orange)} .n-orange h3{color:#e65100}
-  .n-purple{border-color:var(--purple)} .n-purple h3{color:#7b1fa2}
-  .n-pink{border-color:var(--pink)} .n-pink h3{color:#d84315}
-  .n-teal{border-color:var(--teal)} .n-teal h3{color:#00796b}
+  .n1{border-color:#4fc3f7} .n1 h3{color:#0277bd}
+  .n2{border-color:#7cb342} .n2 h3{color:#558b2f}
+  .n3{border-color:#26a69a} .n3 h3{color:#00796b}
+  .n4{border-color:#ff7a6b} .n4 h3{color:#d84315}
+  .n5{border-color:#7e57c2} .n5 h3{color:#5e35b1}
+  .n6{border-color:#ffb300} .n6 h3{color:#e65100}
+  .n7{border-color:#ef5350} .n7 h3{color:#c62828}
+  .n8{border-color:#5c6bc0} .n8 h3{color:#3949ab}
 
   @media print{
     .topbar,.hint{display:none}
     body{background:#fff}
-    @page{size:A4 landscape;margin:6mm}
-    .stage{transform:scale(.95);transform-origin:top center}
+    @page{size:A4 landscape;margin:5mm}
+    .stage{transform:scale(.88);transform-origin:top center}
   }
-  @media (max-width:1240px){
-    .stage{transform:scale(.82);transform-origin:top center;height:680px}
-  }
-  @media (max-width:980px){
-    .stage{transform:scale(.62);height:520px}
-  }
+  @media (max-width:1360px){.stage{transform:scale(.8);transform-origin:top center;height:760px}}
+  @media (max-width:1080px){.stage{transform:scale(.62);height:590px}}
+  @media (max-width:760px){.stage{transform:scale(.42);height:400px}}
 </style>
 </head>
 <body>
   <div class="topbar">
-    <h1>🧠 Hi! Fly Guy · 绘本思维导图</h1>
+    <h1>👥 Fly Guy 系列 · 人物图谱</h1>
     <div class="btns">
       <a href="index.html">← 返回首页</a>
       <button onclick="window.print()">🖨 打印 / 存PDF</button>
     </div>
   </div>
-  <p class="hint">六大板块速览：人物 · 故事结构 · 高频词 · 重点词汇 · 主题 · 课堂活动（横向 A4 打印最佳）</p>
+  <p class="hint">涵盖 Fly Guy 全系列（19 本正传 + Fly Girl 衍生）出现的人物 · 括号内为出场书号（横向 A4 打印最佳）</p>
 
   <div class="stage-wrap">
     <div class="stage">
-      <svg class="links" viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid meet">
-        <path d="M600,410 Q400,250 250,180" fill="none" stroke="#4fc3f7" stroke-width="4"/>
-        <path d="M600,410 Q360,410 175,410" fill="none" stroke="#7cb342" stroke-width="4"/>
-        <path d="M600,410 Q400,570 250,640" fill="none" stroke="#ffb300" stroke-width="4"/>
-        <path d="M600,410 Q800,250 950,180" fill="none" stroke="#ab47bc" stroke-width="4"/>
-        <path d="M600,410 Q840,410 1025,410" fill="none" stroke="#ff7a6b" stroke-width="4"/>
-        <path d="M600,410 Q800,570 950,640" fill="none" stroke="#26a69a" stroke-width="4"/>
+      <svg class="links" viewBox="0 0 1320 940" preserveAspectRatio="xMidYMid meet">
+        <path d="M660,480 Q410,310 235,160" fill="none" stroke="#4fc3f7" stroke-width="4"/>
+        <path d="M660,480 Q430,430 200,390" fill="none" stroke="#7cb342" stroke-width="4"/>
+        <path d="M660,480 Q430,560 200,620" fill="none" stroke="#26a69a" stroke-width="4"/>
+        <path d="M660,480 Q410,690 235,840" fill="none" stroke="#ff7a6b" stroke-width="4"/>
+        <path d="M660,480 Q910,310 1085,160" fill="none" stroke="#7e57c2" stroke-width="4"/>
+        <path d="M660,480 Q890,430 1120,390" fill="none" stroke="#ffb300" stroke-width="4"/>
+        <path d="M660,480 Q890,560 1120,620" fill="none" stroke="#ef5350" stroke-width="4"/>
+        <path d="M660,480 Q910,690 1085,840" fill="none" stroke="#5c6bc0" stroke-width="4"/>
       </svg>
 
-      <div class="center node" style="left:600px;top:410px;border:6px solid #fff;width:200px;padding:0">
+      <div class="center node" style="left:660px;top:480px;border:6px solid #fff;width:210px">
         <div class="fly">🪰</div>
-        <div class="t1">Hi! Fly Guy</div>
-        <div class="t2">嗨！苍蝇小子 · Book 1</div>
+        <div class="t1">Fly Guy</div>
+        <div class="t2">系列人物图谱</div>
+        <div class="t3">All Characters</div>
       </div>
 
-      <div class="node n-blue" style="left:250px;top:180px">
-        <h3>👦 人物 Characters</h3>
+      <!-- 左 1 -->
+      <div class="node n1" style="left:235px;top:160px">
+        <h3>👬 核心主角</h3>
         <ul>
-          <li><b>Buzz</b>：聪明友善的小男孩</li>
-          <li><b>Fly Guy</b>：只会说 "BUZZ!" 的宠物苍蝇</li>
-          <li>一人一虫，是最好的朋友</li>
+          <li><b>Fly Guy</b>：绿头大眼宠物苍蝇，只会说 "BUZZ!"，忠诚又勇敢</li>
+          <li><b>Buzz</b>：约 7–8 岁、爱幻想的男孩，Fly Guy 的主人兼最好的朋友</li>
         </ul>
       </div>
 
-      <div class="node n-green" style="left:175px;top:410px">
-        <h3>📖 故事 · 三章</h3>
+      <!-- 左 2 -->
+      <div class="node n2" style="left:200px;top:390px">
+        <h3>👨‍👩‍👦 巴兹的家人</h3>
         <ul>
-          <li><b>Ch.1 相遇</b>：Buzz 抓到苍蝇，它会叫出"Buzz"</li>
-          <li><b>Ch.2 是宠物吗</b>：想带它参加宠物秀</li>
-          <li><b>Ch.3 宠物秀</b>：赢得"最聪明宠物奖"</li>
+          <li><b>爸爸 Dad &amp; 妈妈 Mom</b>：善良耐心，常和 Buzz、Fly Guy 一起出游 <span class="bk">(#5 等)</span></li>
         </ul>
       </div>
 
-      <div class="node n-orange" style="left:250px;top:640px">
-        <h3>🔤 高频词 Sight Words</h3>
+      <!-- 左 3 -->
+      <div class="node n3" style="left:200px;top:620px">
+        <h3>🪰 Fly Guy 的大家庭</h3>
         <ul>
-          <li>a · the · is · can · my · you</li>
-          <li>he · was · said · what · with</li>
-          <li>目标：见词即读，不用拼读</li>
+          <li>苍蝇爸爸、妈妈</li>
+          <li>成千上万的兄弟姐妹 &amp; 表亲 <span class="bk">(#17 大家庭)</span></li>
         </ul>
       </div>
 
-      <div class="node n-purple" style="left:950px;top:180px">
-        <h3>📚 重点词汇 Vocabulary</h3>
+      <!-- 左 4 -->
+      <div class="node n4" style="left:235px;top:840px">
+        <h3>👧 朋友们</h3>
         <ul>
-          <li><b>slimy</b> 黏糊糊的</li>
-          <li><b>judges</b> 评委　<b>award</b> 奖品</li>
-          <li><b>amazed</b> 惊讶的　<b>fancy</b> 花哨的</li>
+          <li><b>Liz</b>：女孩　<b>Fly Girl</b>：Liz 的宠物苍蝇、Fly Guy 的好朋友 <span class="bk">(#8)</span></li>
+          <li><b>Carlos</b> 和他的宠物蜥蜴（爱吃苍蝇）<span class="bk">(衍生)</span></li>
         </ul>
       </div>
 
-      <div class="node n-pink" style="left:1025px;top:410px">
-        <h3>💡 主题 Themes</h3>
+      <!-- 右 1 -->
+      <div class="node n5" style="left:1085px;top:160px">
+        <h3>🦸 超级英雄分身</h3>
         <ul>
-          <li>友谊 Friendship</li>
-          <li>做独一无二的自己</li>
-          <li>聪明 + 幽默的力量</li>
+          <li><b>Buzz Boy</b>：Buzz 的超级英雄形象 <span class="bk">(#9)</span></li>
+          <li><b>Super Fly Guy</b>：Fly Guy 的英雄形象</li>
+          <li><b>Dragon Dude</b>：并肩作战的伙伴 <span class="bk">(#18)</span></li>
         </ul>
       </div>
 
-      <div class="node n-teal" style="left:950px;top:640px">
-        <h3>🎯 课堂活动 Activities</h3>
+      <!-- 右 2 -->
+      <div class="node n6" style="left:1120px;top:390px">
+        <h3>🎭 Fly Guy 的变身</h3>
         <ul>
-          <li>高频词游戏 + 闪卡</li>
-          <li>人物贴纸奖励</li>
-          <li>角色扮演 / 看图造句</li>
+          <li><b>Prince Fly Guy</b> 王子 <span class="bk">(#15)</span></li>
+          <li><b>Ninja Fly Guy</b> 忍者 <span class="bk">(#16)</span></li>
+          <li><b>50-Foot Fly Guy</b> 巨型苍蝇 <span class="bk">(#19)</span></li>
+        </ul>
+      </div>
+
+      <!-- 右 3 -->
+      <div class="node n7" style="left:1120px;top:620px">
+        <h3>👾 对手 &amp; 怪物</h3>
+        <ul>
+          <li><b>The Flyswatter</b> 苍蝇拍（头号克星）<span class="bk">(#10)</span></li>
+          <li><b>Frankenfly</b> 科学怪苍蝇 <span class="bk">(#13)</span></li>
+          <li><b>Aliens</b> 外星人 <span class="bk">(#18)</span>　吞苍蝇的老太太 <span class="bk">(#4)</span></li>
+        </ul>
+      </div>
+
+      <!-- 右 4 -->
+      <div class="node n8" style="left:1085px;top:840px">
+        <h3>🏫 配角</h3>
+        <ul>
+          <li>宠物秀评委 The Judges <span class="bk">(#1)</span></li>
+          <li>学校食堂阿姨 Lunch Lady <span class="bk">(#2)</span></li>
+          <li>同学 &amp; 老师 Classmates &amp; Teacher</li>
         </ul>
       </div>
     </div>
