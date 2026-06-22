@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hi! Fly Guy 人物贴纸（可打印手工）· 小姨英语教育</title>
+<style>
+  :root{--ink:#33372c;--green:#7cb342;--green-d:#558b2f;--yellow:#ffd54f;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:#eef7e6}
+  .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    padding:14px 20px;background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;
+    position:sticky;top:0;z-index:9}
+  .topbar h1{font-size:19px}
+  .topbar .btns{display:flex;gap:8px}
+  .topbar a,.topbar button{border:none;cursor:pointer;font-weight:700;font-size:14px;text-decoration:none;
+    padding:8px 14px;border-radius:10px;background:#fff;color:var(--green-d);box-shadow:0 3px 0 rgba(0,0,0,.15)}
+
+  .wrap{max-width:920px;margin:0 auto;padding:20px 16px 60px}
+
+  /* 贴纸成品页（打印满版） */
+  .sticker-page{background:#fff;border-radius:20px;box-shadow:0 6px 20px rgba(0,0,0,.12);
+    padding:22px;border:3px dashed var(--green);text-align:center}
+  .sticker-title{font-size:24px;font-weight:800;color:var(--green-d)}
+  .sticker-sub{font-size:14px;color:#7a8068;margin:6px 0 16px}
+  .sticker-img{width:100%;max-width:780px;height:auto;border-radius:14px}
+  .scissor{border-top:2px dashed #bbb;margin:14px 0 0;position:relative;color:#aaa;font-size:12px;padding-top:6px}
+
+  /* 使用说明 + 玩法（屏幕显示，打印隐藏） */
+  .guide{margin-top:24px}
+  .guide h2{font-size:18px;color:var(--green-d);margin:0 0 6px;border-left:5px solid var(--yellow);padding-left:8px}
+  .steps{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 22px}
+  .step{flex:1;min-width:160px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 3px 10px rgba(0,0,0,.06)}
+  .step .no{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;
+    align-items:center;justify-content:center;font-weight:800;margin-bottom:6px}
+  .step p{font-size:13px;color:#555;line-height:1.6}
+  .plays{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+  .play{background:#fff;border-radius:16px;padding:16px;box-shadow:0 3px 10px rgba(0,0,0,.06);border-top:4px solid var(--yellow)}
+  .play .ic{font-size:30px}
+  .play h3{font-size:15px;margin:6px 0 4px;color:var(--green-d)}
+  .play p{font-size:13px;color:#666;line-height:1.65}
+
+  @media print{
+    .topbar,.guide{display:none}
+    body{background:#fff}
+    .wrap{padding:0;max-width:none}
+    .sticker-page{border:none;box-shadow:none;border-radius:0;padding:4mm}
+    .sticker-img{max-width:100%}
+    @page{size:A4 portrait;margin:8mm}
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>✂️ Hi! Fly Guy 人物贴纸 · 剪一剪 贴一贴</h1>
+    <div class="btns">
+      <a href="index.html">← 返回首页</a>
+      <a href="images/fly-guy-stickers.png" download>⬇ 下载图片</a>
+      <button onclick="window.print()">🖨 打印贴纸</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="sticker-page">
+      <div class="sticker-title">🪰 Hi! Fly Guy 人物贴纸</div>
+      <div class="sticker-sub">Sticker Sheet · 沿着每张贴纸的白色边缘剪下来吧！</div>
+      <img class="sticker-img" src="images/fly-guy-stickers.png"
+           alt="Fly Guy 卡通人物贴纸：苍蝇的多种表情、小男孩、玻璃罐、奖杯、对话气泡、星星、叶子" />
+      <div class="scissor">- - - - - - - - - ✂ - - - - - - - - -　建议用厚一点的相纸或贴纸纸打印，效果更好　- - - - - - - - - ✂ - - - - - - - - -</div>
+    </div>
+
+    <div class="guide">
+      <h2>怎么做手工贴纸</h2>
+      <div class="steps">
+        <div class="step"><span class="no">1</span><p>点右上角 <b>「打印贴纸」</b>，或 <b>「下载图片」</b> 后打印。建议用 A4 不干胶贴纸纸 / 相纸。</p></div>
+        <div class="step"><span class="no">2</span><p>让孩子沿每个角色的 <b>白色边缘</b> 用安全剪刀剪下来。</p></div>
+        <div class="step"><span class="no">3</span><p>撕开背胶贴到单词本、奖励墙、文具上；普通纸可用胶棒。</p></div>
+        <div class="step"><span class="no">4</span><p>一边贴一边说英文：<b>“This is Fly Guy!”</b>，把贴纸变成学习游戏。</p></div>
+      </div>
+
+      <h2>贴纸课堂玩法</h2>
+      <div class="plays">
+        <div class="play"><div class="ic">🏆</div><h3>奖励贴纸</h3><p>每完成一个高频词游戏或一页学习单，奖励孩子一张 Fly Guy 贴纸，集满一行换小礼物。</p></div>
+        <div class="play"><div class="ic">💬</div><h3>造句挑战</h3><p>抽一张贴纸贴在卡片上，用英文说一句话，如 <i>“Fly Guy is happy.”</i> / <i>“The boy has a jar.”</i></p></div>
+        <div class="play"><div class="ic">😀</div><h3>表情学情绪</h3><p>用苍蝇的不同表情学情绪词：happy（开心）、surprised（惊讶）、love（喜欢）、sleepy（困）。</p></div>
+        <div class="play"><div class="ic">📒</div><h3>我的收集册</h3><p>把贴纸贴进专属“Fly Guy 单词本”，做成孩子自己的绘本角色收藏，激励持续阅读。</p></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

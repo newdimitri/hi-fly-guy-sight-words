@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hi! Fly Guy 思维导图 · 小姨英语教育</title>
+<style>
+  :root{
+    --ink:#33372c; --blue:#4fc3f7; --green:#7cb342; --orange:#ffb300;
+    --purple:#ab47bc; --pink:#ff7a6b; --teal:#26a69a; --center:#558b2f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);
+    background:radial-gradient(circle at 50% 40%,#fbfff2,#e9f7ec);min-height:100vh}
+  .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+    padding:14px 20px;background:linear-gradient(135deg,var(--green),var(--center));color:#fff}
+  .topbar h1{font-size:20px}
+  .topbar .btns{display:flex;gap:8px}
+  .topbar a,.topbar button{border:none;cursor:pointer;font-weight:700;font-size:14px;text-decoration:none;
+    padding:8px 14px;border-radius:10px;background:#fff;color:var(--center);box-shadow:0 3px 0 rgba(0,0,0,.15)}
+  .hint{text-align:center;color:#7a8068;font-size:13px;padding:10px}
+
+  .stage-wrap{display:flex;justify-content:center;padding:0 12px 40px}
+  .stage{position:relative;width:1200px;height:820px;max-width:100%}
+  svg.links{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible}
+
+  .node{position:absolute;transform:translate(-50%,-50%);z-index:2;border-radius:18px;
+    box-shadow:0 5px 0 rgba(0,0,0,.10),0 10px 22px rgba(0,0,0,.12);padding:12px 16px;background:#fff;
+    border:3px solid #ddd;width:248px}
+  .node h3{font-size:17px;display:flex;align-items:center;gap:6px;margin-bottom:6px}
+  .node ul{list-style:none;font-size:13px;line-height:1.65}
+  .node li{padding-left:14px;position:relative;color:#4a4f40}
+  .node li::before{content:"•";position:absolute;left:0;font-weight:800}
+
+  .center{width:200px;height:200px;border-radius:50%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;color:#fff;
+    background:radial-gradient(circle at 35% 30%,#8bc34a,var(--center));border:6px solid #fff;
+    box-shadow:0 8px 0 rgba(0,0,0,.12),0 16px 34px rgba(0,0,0,.18)}
+  .center .fly{font-size:54px;line-height:1}
+  .center .t1{font-size:22px;font-weight:800;margin-top:4px}
+  .center .t2{font-size:12px;opacity:.92;margin-top:2px}
+
+  .n-blue{border-color:var(--blue)} .n-blue h3{color:#0277bd}
+  .n-green{border-color:var(--green)} .n-green h3{color:var(--center)}
+  .n-orange{border-color:var(--orange)} .n-orange h3{color:#e65100}
+  .n-purple{border-color:var(--purple)} .n-purple h3{color:#7b1fa2}
+  .n-pink{border-color:var(--pink)} .n-pink h3{color:#d84315}
+  .n-teal{border-color:var(--teal)} .n-teal h3{color:#00796b}
+
+  @media print{
+    .topbar,.hint{display:none}
+    body{background:#fff}
+    @page{size:A4 landscape;margin:6mm}
+    .stage{transform:scale(.95);transform-origin:top center}
+  }
+  @media (max-width:1240px){
+    .stage{transform:scale(.82);transform-origin:top center;height:680px}
+  }
+  @media (max-width:980px){
+    .stage{transform:scale(.62);height:520px}
+  }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>🧠 Hi! Fly Guy · 绘本思维导图</h1>
+    <div class="btns">
+      <a href="index.html">← 返回首页</a>
+      <button onclick="window.print()">🖨 打印 / 存PDF</button>
+    </div>
+  </div>
+  <p class="hint">六大板块速览：人物 · 故事结构 · 高频词 · 重点词汇 · 主题 · 课堂活动（横向 A4 打印最佳）</p>
+
+  <div class="stage-wrap">
+    <div class="stage">
+      <svg class="links" viewBox="0 0 1200 820" preserveAspectRatio="xMidYMid meet">
+        <path d="M600,410 Q400,250 250,180" fill="none" stroke="#4fc3f7" stroke-width="4"/>
+        <path d="M600,410 Q360,410 175,410" fill="none" stroke="#7cb342" stroke-width="4"/>
+        <path d="M600,410 Q400,570 250,640" fill="none" stroke="#ffb300" stroke-width="4"/>
+        <path d="M600,410 Q800,250 950,180" fill="none" stroke="#ab47bc" stroke-width="4"/>
+        <path d="M600,410 Q840,410 1025,410" fill="none" stroke="#ff7a6b" stroke-width="4"/>
+        <path d="M600,410 Q800,570 950,640" fill="none" stroke="#26a69a" stroke-width="4"/>
+      </svg>
+
+      <div class="center node" style="left:600px;top:410px;border:6px solid #fff;width:200px;padding:0">
+        <div class="fly">🪰</div>
+        <div class="t1">Hi! Fly Guy</div>
+        <div class="t2">嗨！苍蝇小子 · Book 1</div>
+      </div>
+
+      <div class="node n-blue" style="left:250px;top:180px">
+        <h3>👦 人物 Characters</h3>
+        <ul>
+          <li><b>Buzz</b>：聪明友善的小男孩</li>
+          <li><b>Fly Guy</b>：只会说 "BUZZ!" 的宠物苍蝇</li>
+          <li>一人一虫，是最好的朋友</li>
+        </ul>
+      </div>
+
+      <div class="node n-green" style="left:175px;top:410px">
+        <h3>📖 故事 · 三章</h3>
+        <ul>
+          <li><b>Ch.1 相遇</b>：Buzz 抓到苍蝇，它会叫出"Buzz"</li>
+          <li><b>Ch.2 是宠物吗</b>：想带它参加宠物秀</li>
+          <li><b>Ch.3 宠物秀</b>：赢得"最聪明宠物奖"</li>
+        </ul>
+      </div>
+
+      <div class="node n-orange" style="left:250px;top:640px">
+        <h3>🔤 高频词 Sight Words</h3>
+        <ul>
+          <li>a · the · is · can · my · you</li>
+          <li>he · was · said · what · with</li>
+          <li>目标：见词即读，不用拼读</li>
+        </ul>
+      </div>
+
+      <div class="node n-purple" style="left:950px;top:180px">
+        <h3>📚 重点词汇 Vocabulary</h3>
+        <ul>
+          <li><b>slimy</b> 黏糊糊的</li>
+          <li><b>judges</b> 评委　<b>award</b> 奖品</li>
+          <li><b>amazed</b> 惊讶的　<b>fancy</b> 花哨的</li>
+        </ul>
+      </div>
+
+      <div class="node n-pink" style="left:1025px;top:410px">
+        <h3>💡 主题 Themes</h3>
+        <ul>
+          <li>友谊 Friendship</li>
+          <li>做独一无二的自己</li>
+          <li>聪明 + 幽默的力量</li>
+        </ul>
+      </div>
+
+      <div class="node n-teal" style="left:950px;top:640px">
+        <h3>🎯 课堂活动 Activities</h3>
+        <ul>
+          <li>高频词游戏 + 闪卡</li>
+          <li>人物贴纸奖励</li>
+          <li>角色扮演 / 看图造句</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
