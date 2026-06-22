@@ -8,6 +8,28 @@
 
 ---
 
+## 🌐 在线访问
+
+已部署到公网（Surge.sh），手机 / 平板 / 电脑浏览器直接打开即可，无需安装：
+
+**https://hi-fly-guy.surge.sh**
+
+- 互动课件：https://hi-fly-guy.surge.sh/courseware.html
+- 纸质学习单：https://hi-fly-guy.surge.sh/worksheet.html
+
+### 修改后如何重新部署
+
+改完本目录下的 HTML 后，在本目录执行（需已安装并登录 Surge）：
+
+```bash
+surge ./ hi-fly-guy.surge.sh
+```
+
+> 首次使用需登录：`surge login`（账号邮箱 `460017729@qq.com`，密码见交付说明）。
+> 退出登录：`surge logout`。
+
+---
+
 ## 一、文件说明
 
 | 文件 | 用途 | 在哪用 |
