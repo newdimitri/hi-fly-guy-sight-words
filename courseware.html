@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hi! Fly Guy 高频词课件 · 小姨英语教育</title>
+<style>
+  :root{
+    --green:#7cb342; --green-d:#558b2f; --yellow:#ffd54f; --yellow-d:#ffb300;
+    --ink:#33372c; --paper:#fffef7; --card:#ffffff; --line:#e6e2cf;
+    --blue:#4fc3f7; --pink:#ff8a80; --ok:#43a047; --bad:#e53935;
+    --shadow:0 6px 0 rgba(0,0,0,.08), 0 10px 24px rgba(0,0,0,.10);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Comic Sans MS",-apple-system,system-ui,sans-serif;
+    background:
+      radial-gradient(circle at 12% 18%, #fff6c9 0 12px, transparent 13px),
+      radial-gradient(circle at 82% 70%, #d7f0c0 0 14px, transparent 15px),
+      linear-gradient(180deg,#f4fbe9,#eafbf6);
+    color:var(--ink); min-height:100vh;
+  }
+  header.top{
+    background:linear-gradient(135deg,var(--green),var(--green-d));
+    color:#fff; padding:18px 20px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .logo{font-size:34px}
+  header.top h1{margin:0; font-size:22px; letter-spacing:.5px}
+  header.top .sub{opacity:.92; font-size:13px; margin-top:2px}
+  .wrap{max-width:980px; margin:0 auto; padding:18px 16px 60px}
+
+  nav.tabs{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 22px; justify-content:center}
+  .tab{
+    border:none; cursor:pointer; font-weight:700; font-size:15px;
+    padding:11px 16px; border-radius:14px; background:#fff; color:var(--green-d);
+    box-shadow:0 4px 0 #d8e4c4; transition:transform .08s;
+  }
+  .tab:hover{transform:translateY(-2px)}
+  .tab.active{background:var(--yellow); color:#7a5b00; box-shadow:0 4px 0 var(--yellow-d)}
+
+  .panel{display:none; animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+
+  .card{background:var(--card); border:2px solid var(--line); border-radius:20px; box-shadow:var(--shadow)}
+  h2.sec{font-size:20px; margin:0 0 4px; color:var(--green-d)}
+  p.tip{margin:0 0 16px; color:#7a8068; font-size:14px}
+
+  /* ===== 学习单网格 ===== */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px}
+  .word-card{padding:14px; text-align:center; position:relative; cursor:pointer}
+  .word-card .lv{position:absolute; top:8px; right:10px; font-size:11px; font-weight:700; color:#fff;
+    background:var(--green); padding:2px 8px; border-radius:20px}
+  .word-card .en{font-size:28px; font-weight:800; color:var(--ink); margin:8px 0 2px; letter-spacing:1px}
+  .word-card .zh{font-size:14px; color:#6b7160}
+  .word-card .ex{font-size:12px; color:#9aa089; margin-top:8px; min-height:30px}
+  .spk{margin-top:8px; border:none; background:var(--blue); color:#fff; border-radius:50%; width:36px;height:36px;
+    font-size:16px; cursor:pointer; box-shadow:0 3px 0 #2196c4}
+  .spk:active{transform:translateY(2px)}
+
+  /* ===== 闪卡 ===== */
+  .flash-stage{display:flex; flex-direction:column; align-items:center; gap:16px; padding:24px}
+  .flashcard{width:min(420px,90vw); height:240px; perspective:1200px; cursor:pointer}
+  .fc-inner{position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d}
+  .flashcard.flip .fc-inner{transform:rotateY(180deg)}
+  .fc-face{position:absolute; inset:0; backface-visibility:hidden; border-radius:24px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:var(--shadow)}
+  .fc-front{background:linear-gradient(135deg,#fff,#fffef0); border:3px solid var(--yellow)}
+  .fc-front .big{font-size:54px; font-weight:800; letter-spacing:2px}
+  .fc-back{background:linear-gradient(135deg,var(--green),var(--green-d)); color:#fff; transform:rotateY(180deg); padding:18px; text-align:center}
+  .fc-back .zh{font-size:30px; font-weight:800}
+  .fc-back .ex{font-size:16px; margin-top:10px; opacity:.95}
+  .row-btns{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center}
+  .btn{border:none; cursor:pointer; font-weight:700; font-size:15px; padding:11px 18px; border-radius:14px;
+    background:var(--green); color:#fff; box-shadow:0 4px 0 var(--green-d)}
+  .btn:active{transform:translateY(2px)}
+  .btn.y{background:var(--yellow); color:#7a5b00; box-shadow:0 4px 0 var(--yellow-d)}
+  .btn.ghost{background:#fff; color:var(--green-d); box-shadow:0 4px 0 #d8e4c4}
+  .counter{font-weight:700; color:#7a8068}
+
+  /* ===== 通用游戏头 ===== */
+  .game-head{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px}
+  .score{font-weight:800; color:var(--green-d); font-size:16px}
+  .pill{background:#eef6e2; color:var(--green-d); padding:6px 12px; border-radius:20px; font-weight:700; font-size:13px}
+
+  /* ===== 配对 ===== */
+  .match-cols{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+  .match-col{display:flex; flex-direction:column; gap:10px}
+  .m-item{padding:14px; border-radius:14px; border:2px solid var(--line); background:#fff; cursor:pointer;
+    font-weight:700; text-align:center; font-size:18px; transition:.12s}
+  .m-item.en{color:var(--ink)}
+  .m-item.zh{color:#5a6150; font-size:16px}
+  .m-item.sel{border-color:var(--blue); background:#e3f5ff; transform:scale(1.02)}
+  .m-item.done{background:#e8f5e0; border-color:var(--green); color:var(--green-d); cursor:default; opacity:.7}
+  .m-item.wrong{border-color:var(--bad); background:#ffe9e7; animation:shake .3s}
+  @keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+
+  /* ===== 听音选词 / 填空 ===== */
+  .quiz-q{text-align:center; padding:18px 10px 10px}
+  .quiz-q .prompt{font-size:20px; color:#5a6150; margin-bottom:6px}
+  .quiz-q .sent{font-size:26px; font-weight:700; margin:8px 0 4px}
+  .blank{display:inline-block; min-width:90px; border-bottom:4px dotted var(--yellow-d); color:transparent}
+  .opts{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:16px}
+  .opt{padding:16px; border-radius:16px; border:2px solid var(--line); background:#fff; cursor:pointer;
+    font-size:22px; font-weight:800; transition:.12s}
+  .opt:hover{transform:translateY(-2px)}
+  .opt.ok{background:#e8f5e0; border-color:var(--green); color:var(--green-d)}
+  .opt.no{background:#ffe9e7; border-color:var(--bad); color:var(--bad)}
+  .big-spk{font-size:64px; cursor:pointer; background:none; border:none}
+
+  /* ===== 拼写 ===== */
+  .spell-stage{text-align:center; padding:10px}
+  .spell-hint{font-size:18px; color:#5a6150; margin:6px 0}
+  .spell-slot{min-height:64px; display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; margin:14px 0}
+  .slot{width:50px; height:60px; border-radius:12px; border:3px dashed var(--line); display:flex; align-items:center;
+    justify-content:center; font-size:28px; font-weight:800; background:#fff}
+  .slot.fill{border-style:solid; border-color:var(--green); background:#f1f8ea}
+  .letters{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:14px 0}
+  .ltr{width:50px; height:58px; border-radius:12px; border:none; background:var(--yellow); color:#7a5b00;
+    font-size:26px; font-weight:800; cursor:pointer; box-shadow:0 4px 0 var(--yellow-d)}
+  .ltr:active{transform:translateY(2px)}
+  .ltr.used{opacity:.25; pointer-events:none}
+
+  .feedback{text-align:center; font-size:22px; font-weight:800; min-height:30px; margin-top:8px}
+  .feedback.good{color:var(--ok)}
+  .feedback.bad{color:var(--bad)}
+
+  footer{text-align:center; color:#9aa089; font-size:12px; padding:20px}
+  .toolbar{display:flex; justify-content:flex-end; gap:8px; margin-bottom:10px}
+  @media (max-width:560px){
+    .match-cols{gap:12px}
+    .opts{grid-template-columns:1fr}
+    .fc-front .big{font-size:42px}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="logo">🪰</div>
+  <div>
+    <h1>Hi! Fly Guy · 高频词课件</h1>
+    <div class="sub">Sight Words 视读词 · 适用对象：小学 1–4 年级 · 小姨英语教育</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-p="study">📖 学习单</button>
+    <button class="tab" data-p="flash">🃏 单词闪卡</button>
+    <button class="tab" data-p="match">🔗 配对连线</button>
+    <button class="tab" data-p="listen">👂 听音选词</button>
+    <button class="tab" data-p="fill">✏️ 句子填空</button>
+    <button class="tab" data-p="spell">🔤 拼写单词</button>
+  </nav>
+
+  <!-- 学习单 -->
+  <section class="panel active" id="study">
+    <h2 class="sec">📖 高频词学习单</h2>
+    <p class="tip">点击卡片可翻看例句，点蓝色喇叭听发音。共 <span id="wcount"></span> 个高频词，按难度分级。</p>
+    <div class="toolbar">
+      <button class="btn ghost" id="readAll">🔊 全部朗读</button>
+    </div>
+    <div class="grid" id="studyGrid"></div>
+  </section>
+
+  <!-- 闪卡 -->
+  <section class="panel" id="flash">
+    <h2 class="sec">🃏 单词闪卡</h2>
+    <p class="tip">看英文先读出来，再点卡片翻面看中文和例句。</p>
+    <div class="flash-stage">
+      <div class="flashcard" id="flashcard">
+        <div class="fc-inner">
+          <div class="fc-face fc-front"><div class="big" id="fcWord">the</div><div style="color:#9aa089;font-size:13px;margin-top:8px">点我翻面 👆</div></div>
+          <div class="fc-face fc-back"><div class="zh" id="fcZh"></div><div class="ex" id="fcEx"></div></div>
+        </div>
+      </div>
+      <div class="row-btns">
+        <button class="btn ghost" id="fcPrev">⬅ 上一个</button>
+        <span class="counter" id="fcCount"></span>
+        <button class="btn ghost" id="fcNext">下一个 ➡</button>
+      </div>
+      <div class="row-btns">
+        <button class="btn" id="fcSpeak">🔊 朗读</button>
+        <button class="btn y" id="fcShuffle">🔀 打乱顺序</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 配对 -->
+  <section class="panel" id="match">
+    <h2 class="sec">🔗 配对连线</h2>
+    <p class="tip">先点左边英文，再点右边对应的中文，配对成功会变绿。</p>
+    <div class="game-head">
+      <span class="pill" id="matchProgress">0 / 0</span>
+      <button class="btn y" id="matchNew">🔄 换一批</button>
+    </div>
+    <div class="card" style="padding:18px">
+      <div class="match-cols">
+        <div class="match-col" id="matchEn"></div>
+        <div class="match-col" id="matchZh"></div>
+      </div>
+    </div>
+    <div class="feedback" id="matchFb"></div>
+  </section>
+
+  <!-- 听音选词 -->
+  <section class="panel" id="listen">
+    <h2 class="sec">👂 听音选词</h2>
+    <p class="tip">点大喇叭听单词，再选出正确的英文。</p>
+    <div class="game-head">
+      <span class="score" id="listenScore">得分：0</span>
+      <button class="btn y" id="listenNext">下一题 ➡</button>
+    </div>
+    <div class="card" style="padding:18px">
+      <div class="quiz-q"><button class="big-spk" id="listenSpk">🔊</button><div class="prompt">点喇叭再听一次</div></div>
+      <div class="opts" id="listenOpts"></div>
+    </div>
+    <div class="feedback" id="listenFb"></div>
+  </section>
+
+  <!-- 句子填空 -->
+  <section class="panel" id="fill">
+    <h2 class="sec">✏️ 句子填空</h2>
+    <p class="tip">读句子，选出空格里应该填的单词。</p>
+    <div class="game-head">
+      <span class="score" id="fillScore">得分：0</span>
+      <button class="btn y" id="fillNext">下一题 ➡</button>
+    </div>
+    <div class="card" style="padding:18px">
+      <div class="quiz-q">
+        <button class="big-spk" id="fillSpk" title="朗读句子">🔊</button>
+        <div class="sent" id="fillSent"></div>
+        <div class="prompt" id="fillZh"></div>
+      </div>
+      <div class="opts" id="fillOpts"></div>
+    </div>
+    <div class="feedback" id="fillFb"></div>
+  </section>
+
+  <!-- 拼写 -->
+  <section class="panel" id="spell">
+    <h2 class="sec">🔤 拼写单词</h2>
+    <p class="tip">看中文提示、听发音，点字母把单词拼出来。</p>
+    <div class="game-head">
+      <span class="score" id="spellScore">得分：0</span>
+      <button class="btn y" id="spellNext">下一题 ➡</button>
+    </div>
+    <div class="card spell-stage" style="padding:18px">
+      <button class="big-spk" id="spellSpk">🔊</button>
+      <div class="spell-hint" id="spellHint"></div>
+      <div class="spell-slot" id="spellSlot"></div>
+      <div class="letters" id="spellLetters"></div>
+      <div class="row-btns"><button class="btn ghost" id="spellClear">↩ 清空重来</button></div>
+    </div>
+    <div class="feedback" id="spellFb"></div>
+  </section>
+</div>
+
+<footer>小姨英语教育 · Hi! Fly Guy 高频词课件 · 高频词依据 Dolch / Fry 视读词表（例句为原创教学内容）</footer>
+
+<script>
+/* ========== 高频词数据（Hi! Fly Guy 中真实出现的视读词；例句为原创） ========== */
+const WORDS = [
+  {w:"a",      zh:"一个",        lv:"Pre-K", ex:"Buzz has a pet.",        exZh:"巴兹有一只宠物。"},
+  {w:"the",    zh:"这/那（指特定）", lv:"Pre-K", ex:"The fly is happy.",      exZh:"这只苍蝇很开心。"},
+  {w:"to",     zh:"去/到",       lv:"Pre-K", ex:"Buzz wants to play.",     exZh:"巴兹想去玩。"},
+  {w:"he",     zh:"他",          lv:"K",     ex:"He is a boy.",            exZh:"他是个男孩。"},
+  {w:"for",    zh:"为了/给",     lv:"Pre-K", ex:"A pet for Buzz.",         exZh:"给巴兹的一只宠物。"},
+  {w:"can",    zh:"能/会",       lv:"Pre-K", ex:"Fly Guy can buzz.",       exZh:"飞天小子会嗡嗡叫。"},
+  {w:"not",    zh:"不",          lv:"Pre-K", ex:"It is not a bee.",        exZh:"它不是一只蜜蜂。"},
+  {w:"up",     zh:"向上",        lv:"Pre-K", ex:"Fly Guy flies up.",       exZh:"飞天小子往上飞。"},
+  {w:"down",   zh:"向下",        lv:"Pre-K", ex:"Fly Guy flies down.",     exZh:"飞天小子往下飞。"},
+  {w:"look",   zh:"看",          lv:"Pre-K", ex:"Look at Fly Guy!",        exZh:"快看飞天小子！"},
+  {w:"my",     zh:"我的",        lv:"Pre-K", ex:"Fly Guy is my pet.",      exZh:"飞天小子是我的宠物。"},
+  {w:"you",    zh:"你",          lv:"Pre-K", ex:"Can you see it?",         exZh:"你能看见它吗？"},
+  {w:"in",     zh:"在……里",      lv:"Pre-K", ex:"Fly Guy is in a jar.",    exZh:"飞天小子在罐子里。"},
+  {w:"is",     zh:"是",          lv:"Pre-K", ex:"Fly Guy is smart.",       exZh:"飞天小子很聪明。"},
+  {w:"are",    zh:"是（复数）",  lv:"K",     ex:"We are friends.",         exZh:"我们是朋友。"},
+  {w:"but",    zh:"但是",        lv:"K",     ex:"Small, but smart.",       exZh:"虽小，但聪明。"},
+  {w:"this",   zh:"这个",        lv:"K",     ex:"This is Fly Guy.",        exZh:"这是飞天小子。"},
+  {w:"was",    zh:"是（过去）",  lv:"K",     ex:"Buzz was happy.",         exZh:"巴兹（当时）很开心。"},
+  {w:"went",   zh:"去了",        lv:"K",     ex:"Buzz went home.",         exZh:"巴兹回家了。"},
+  {w:"saw",    zh:"看见了",      lv:"K",     ex:"Buzz saw a fly.",         exZh:"巴兹看见一只苍蝇。"},
+  {w:"what",   zh:"什么",        lv:"K",     ex:"What is your name?",      exZh:"你叫什么名字？"},
+  {w:"with",   zh:"和……一起",    lv:"K",     ex:"Play with Fly Guy.",      exZh:"和飞天小子一起玩。"},
+  {w:"said",   zh:"说（过去）",  lv:"K",     ex:"Buzz said hi.",           exZh:"巴兹说了声你好。"},
+  {w:"his",    zh:"他的",        lv:"1st",   ex:"His pet can fly.",        exZh:"他的宠物会飞。"},
+  {w:"know",   zh:"知道",        lv:"1st",   ex:"I know your name.",       exZh:"我知道你的名字。"},
+  {w:"away",   zh:"离开/走开",   lv:"Pre-K", ex:"Fly Guy flew away.",      exZh:"飞天小子飞走了。"},
+  {w:"around", zh:"到处/四周",   lv:"2nd",   ex:"It flew around.",         exZh:"它到处乱飞。"},
+  {w:"home",   zh:"家",          lv:"1st",   ex:"Buzz took it home.",      exZh:"巴兹把它带回家。"},
+  {w:"boy",    zh:"男孩",        lv:"名词",  ex:"The boy is Buzz.",        exZh:"那个男孩是巴兹。"},
+  {w:"pet",    zh:"宠物",        lv:"名词",  ex:"Fly Guy is a pet.",       exZh:"飞天小子是一只宠物。"},
+  {w:"fly",    zh:"苍蝇/飞",     lv:"1st",   ex:"Fly Guy is a fly.",       exZh:"飞天小子是一只苍蝇。"},
+  {w:"name",   zh:"名字",        lv:"名词",  ex:"My name is Buzz.",        exZh:"我的名字叫巴兹。"}
+];
+
+/* ========== 语音（TTS） ========== */
+let voice=null;
+function pickVoice(){
+  const vs=speechSynthesis.getVoices();
+  voice = vs.find(v=>/en[-_]US/i.test(v.lang)&&/female|samantha|zira|google/i.test(v.name))
+       || vs.find(v=>/^en/i.test(v.lang)) || null;
+}
+if('speechSynthesis' in window){ pickVoice(); speechSynthesis.onvoiceschanged=pickVoice; }
+function speak(text,rate){
+  if(!('speechSynthesis' in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='en-US'; u.rate=rate||0.85; u.pitch=1.05;
+  if(voice)u.voice=voice;
+  speechSynthesis.speak(u);
+}
+
+/* ========== 工具 ========== */
+const $=s=>document.querySelector(s);
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const sample=(arr,n,exclude)=>{const pool=arr.filter(x=>x!==exclude);return shuffle(pool).slice(0,n);};
+
+/* ========== Tab 切换 ========== */
+const panels=document.querySelectorAll('.panel');
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    panels.forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    $('#'+t.dataset.p).classList.add('active');
+    if(t.dataset.p==='match')newMatch();
+    if(t.dataset.p==='listen')newListen();
+    if(t.dataset.p==='fill')newFill();
+    if(t.dataset.p==='spell')newSpell();
+  };
+});
+
+/* ========== 学习单 ========== */
+$('#wcount').textContent=WORDS.length;
+const lvColor={'Pre-K':'#7cb342','K':'#26a69a','1st':'#5c6bc0','2nd':'#ab47bc','名词':'#ff7043'};
+function buildStudy(){
+  const g=$('#studyGrid'); g.innerHTML='';
+  WORDS.forEach(o=>{
+    const c=document.createElement('div'); c.className='card word-card';
+    c.innerHTML=`<span class="lv" style="background:${lvColor[o.lv]||'#7cb342'}">${o.lv}</span>
+      <div class="en">${o.w}</div><div class="zh">${o.zh}</div>
+      <div class="ex">${o.ex}<br><span style="color:#c0c4b2">${o.exZh}</span></div>
+      <button class="spk">🔊</button>`;
+    c.querySelector('.spk').onclick=e=>{e.stopPropagation();speak(o.w);};
+    c.onclick=()=>speak(o.ex);
+    g.appendChild(c);
+  });
+}
+buildStudy();
+$('#readAll').onclick=async()=>{
+  for(const o of WORDS){ speak(o.w); await new Promise(r=>setTimeout(r,900)); }
+};
+
+/* ========== 闪卡 ========== */
+let fcList=shuffle(WORDS), fcIdx=0;
+function renderFlash(){
+  const o=fcList[fcIdx];
+  $('#flashcard').classList.remove('flip');
+  $('#fcWord').textContent=o.w;
+  $('#fcZh').textContent=o.zh;
+  $('#fcEx').textContent=o.ex;
+  $('#fcCount').textContent=(fcIdx+1)+' / '+fcList.length;
+}
+$('#flashcard').onclick=()=>$('#flashcard').classList.toggle('flip');
+$('#fcPrev').onclick=()=>{fcIdx=(fcIdx-1+fcList.length)%fcList.length;renderFlash();};
+$('#fcNext').onclick=()=>{fcIdx=(fcIdx+1)%fcList.length;renderFlash();speak(fcList[fcIdx].w);};
+$('#fcSpeak').onclick=()=>speak(fcList[fcIdx].w);
+$('#fcShuffle').onclick=()=>{fcList=shuffle(WORDS);fcIdx=0;renderFlash();};
+renderFlash();
+
+/* ========== 配对 ========== */
+let matchSel=null, matchDone=0, matchTotal=0;
+function newMatch(){
+  const set=shuffle(WORDS).slice(0,6);
+  matchTotal=set.length; matchDone=0; matchSel=null;
+  $('#matchProgress').textContent='0 / '+matchTotal;
+  $('#matchFb').textContent='';
+  const enCol=$('#matchEn'), zhCol=$('#matchZh');
+  enCol.innerHTML=''; zhCol.innerHTML='';
+  set.forEach(o=>{
+    const e=document.createElement('div'); e.className='m-item en'; e.textContent=o.w; e.dataset.w=o.w;
+    e.onclick=()=>{ if(e.classList.contains('done'))return; speak(o.w);
+      document.querySelectorAll('#matchEn .m-item').forEach(x=>x.classList.remove('sel'));
+      e.classList.add('sel'); matchSel=o.w; };
+    enCol.appendChild(e);
+  });
+  shuffle(set).forEach(o=>{
+    const z=document.createElement('div'); z.className='m-item zh'; z.textContent=o.zh; z.dataset.w=o.w;
+    z.onclick=()=>{
+      if(z.classList.contains('done')||!matchSel)return;
+      if(matchSel===o.w){
+        z.classList.add('done');
+        const en=document.querySelector('#matchEn .m-item[data-w="'+o.w+'"]');
+        en.classList.add('done'); en.classList.remove('sel');
+        matchSel=null; matchDone++;
+        $('#matchProgress').textContent=matchDone+' / '+matchTotal;
+        if(matchDone===matchTotal){$('#matchFb').textContent='🎉 全部配对成功！';$('#matchFb').className='feedback good';}
+      }else{
+        z.classList.add('wrong'); setTimeout(()=>z.classList.remove('wrong'),350);
+      }
+    };
+    zhCol.appendChild(z);
+  });
+}
+$('#matchNew').onclick=newMatch;
+
+/* ========== 听音选词 ========== */
+let listenAns=null, listenScore=0;
+function newListen(){
+  $('#listenFb').textContent='';
+  const ans=shuffle(WORDS)[0]; listenAns=ans;
+  const opts=shuffle([ans,...sample(WORDS,3,ans)]);
+  const box=$('#listenOpts'); box.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o.w;
+    b.onclick=()=>{
+      if(o.w===listenAns.w){ b.classList.add('ok'); listenScore++; $('#listenScore').textContent='得分：'+listenScore;
+        $('#listenFb').textContent='✅ 正确！'; $('#listenFb').className='feedback good';
+        setTimeout(newListen,900);
+      }else{ b.classList.add('no'); $('#listenFb').textContent='❌ 再听一次试试'; $('#listenFb').className='feedback bad';
+        speak(listenAns.w); }
+    };
+    box.appendChild(b);
+  });
+  setTimeout(()=>speak(ans.w),200);
+}
+$('#listenSpk').onclick=()=>listenAns&&speak(listenAns.w);
+$('#listenNext').onclick=newListen;
+
+/* ========== 句子填空 ========== */
+let fillAns=null, fillScore=0;
+function newFill(){
+  $('#fillFb').textContent='';
+  const ans=shuffle(WORDS)[0]; fillAns=ans;
+  const sentBlank=ans.ex.replace(new RegExp('\\b'+ans.w+'\\b','i'),'<span class="blank">'+ans.w+'</span>');
+  $('#fillSent').innerHTML=sentBlank;
+  $('#fillZh').textContent=ans.exZh;
+  const opts=shuffle([ans,...sample(WORDS,3,ans)]);
+  const box=$('#fillOpts'); box.innerHTML='';
+  opts.forEach(o=>{
+    const b=document.createElement('button'); b.className='opt'; b.textContent=o.w;
+    b.onclick=()=>{
+      if(o.w===fillAns.w){ b.classList.add('ok'); fillScore++; $('#fillScore').textContent='得分：'+fillScore;
+        $('#fillSent').innerHTML=fillAns.ex; speak(fillAns.ex);
+        $('#fillFb').textContent='✅ 太棒了！'; $('#fillFb').className='feedback good';
+        setTimeout(newFill,1300);
+      }else{ b.classList.add('no'); $('#fillFb').textContent='❌ 不对哦，再想想'; $('#fillFb').className='feedback bad'; }
+    };
+    box.appendChild(b);
+  });
+}
+$('#fillSpk').onclick=()=>fillAns&&speak(fillAns.ex);
+$('#fillNext').onclick=newFill;
+
+/* ========== 拼写 ========== */
+let spellWord=null, spellBuilt='', spellScore=0;
+function newSpell(){
+  $('#spellFb').textContent=''; spellBuilt='';
+  const o=shuffle(WORDS)[0]; spellWord=o;
+  $('#spellHint').innerHTML='中文：<b>'+o.zh+'</b>　　例句：'+o.ex;
+  renderSlots();
+  const letters=shuffle(o.w.split(''));
+  const lb=$('#spellLetters'); lb.innerHTML='';
+  letters.forEach((ch,i)=>{
+    const b=document.createElement('button'); b.className='ltr'; b.textContent=ch; b.dataset.i=i;
+    b.onclick=()=>{ if(b.classList.contains('used'))return; b.classList.add('used'); spellBuilt+=ch; renderSlots(); checkSpell(); };
+    lb.appendChild(b);
+  });
+  setTimeout(()=>speak(o.w),200);
+}
+function renderSlots(){
+  const slot=$('#spellSlot'); slot.innerHTML='';
+  for(let i=0;i<spellWord.w.length;i++){
+    const s=document.createElement('div'); s.className='slot'+(spellBuilt[i]?' fill':'');
+    s.textContent=spellBuilt[i]||''; slot.appendChild(s);
+  }
+}
+function checkSpell(){
+  if(spellBuilt.length===spellWord.w.length){
+    if(spellBuilt===spellWord.w){ spellScore++; $('#spellScore').textContent='得分：'+spellScore;
+      $('#spellFb').textContent='🎉 拼对了！'; $('#spellFb').className='feedback good'; speak(spellWord.w);
+      setTimeout(newSpell,1300);
+    }else{ $('#spellFb').textContent='❌ 顺序不对，点"清空重来"'; $('#spellFb').className='feedback bad'; }
+  }
+}
+$('#spellClear').onclick=()=>{ spellBuilt=''; renderSlots(); $('#spellFb').textContent='';
+  document.querySelectorAll('#spellLetters .ltr').forEach(b=>b.classList.remove('used')); };
+$('#spellSpk').onclick=()=>spellWord&&speak(spellWord.w);
+</script>
+</body>
+</html>

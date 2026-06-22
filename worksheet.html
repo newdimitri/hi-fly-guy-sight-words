@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hi! Fly Guy 高频词学习单（可打印）· 小姨英语教育</title>
+<style>
+  :root{ --ink:#222; --line:#333; --soft:#888; --green:#4a7a1f; }
+  *{box-sizing:border-box}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink); margin:0; background:#f0f0f0}
+
+  /* 屏幕上的操作条（打印时隐藏） */
+  .bar{position:sticky; top:0; z-index:9; background:#4a7a1f; color:#fff; padding:12px 20px;
+    display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+  .bar b{font-size:16px}
+  .bar button{border:none; background:#ffd54f; color:#5a4400; font-weight:700; padding:9px 18px;
+    border-radius:8px; cursor:pointer; font-size:14px}
+  .bar .hint{font-size:12px; opacity:.9}
+
+  .sheet{background:#fff; width:210mm; min-height:297mm; margin:16px auto; padding:16mm 14mm;
+    box-shadow:0 2px 12px rgba(0,0,0,.18)}
+  .head{display:flex; justify-content:space-between; align-items:flex-end; border-bottom:3px solid var(--line); padding-bottom:8px}
+  .head h1{margin:0; font-size:22px}
+  .head .meta{font-size:12px; color:var(--soft); text-align:right; line-height:1.7}
+  .nameline{display:flex; gap:24px; margin:10px 0 4px; font-size:13px; color:#444}
+  .nameline span{flex:1; border-bottom:1px solid #aaa; padding-bottom:2px}
+
+  h2{font-size:16px; margin:22px 0 8px; color:var(--green); border-left:5px solid #ffd54f; padding-left:8px}
+  .note{font-size:12px; color:var(--soft); margin:0 0 8px}
+
+  /* 词表 */
+  table{width:100%; border-collapse:collapse; font-size:13px}
+  th,td{border:1px solid #bbb; padding:6px 8px; text-align:left}
+  th{background:#eef3e6; font-weight:700}
+  .en{font-size:16px; font-weight:700; letter-spacing:.5px}
+  .trace{color:#cfcfcf; font-size:16px; font-weight:700; letter-spacing:3px; font-family:"Comic Sans MS",sans-serif}
+
+  /* 描红区 */
+  .trace-block{display:grid; grid-template-columns:repeat(2,1fr); gap:6px 18px}
+  .trace-row{border-bottom:1px dashed #bbb; padding:8px 0 4px; display:flex; align-items:baseline; gap:10px}
+  .trace-row .label{width:64px; font-weight:700; font-size:14px}
+  .trace-row .ghost{color:#d6d6d6; font-size:18px; letter-spacing:4px; font-family:"Comic Sans MS",sans-serif}
+
+  /* 练习 */
+  ol{margin:6px 0; padding-left:22px}
+  ol li{margin:9px 0; font-size:14px; line-height:1.9}
+  .blank{display:inline-block; min-width:80px; border-bottom:1.5px solid #555; margin:0 4px}
+  .wbank{border:1.5px dashed #4a7a1f; border-radius:8px; padding:8px 12px; margin:6px 0 12px;
+    font-size:14px; background:#fafdf5}
+  .wbank b{color:var(--green)}
+  .match{display:grid; grid-template-columns:1fr 1fr; gap:4px 40px; font-size:15px; margin-top:6px}
+  .match .col{display:flex; flex-direction:column; gap:14px; padding:8px 0}
+  .match .col div{padding:6px 10px; border:1px solid #bbb; border-radius:6px}
+  .write-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:8px 18px; font-size:14px}
+  .write-grid .item{display:flex; align-items:center; gap:8px; border-bottom:1px solid #ccc; padding:8px 0}
+  .write-grid .zh{width:90px; color:#444}
+  .write-grid .line{flex:1; border-bottom:1px dotted #999; height:18px}
+  .answer{font-size:11px; color:#999; margin-top:6px}
+
+  .foot{margin-top:26px; border-top:1px solid #ccc; padding-top:8px; font-size:11px; color:var(--soft);
+    display:flex; justify-content:space-between}
+  .star{color:#e0a800}
+
+  @media print{
+    .bar{display:none}
+    body{background:#fff}
+    .sheet{box-shadow:none; margin:0; width:auto; min-height:auto}
+    .answer{display:none}            /* 打印学生版时隐藏答案 */
+    .page-break{page-break-before:always}
+    @page{size:A4; margin:12mm}
+  }
+</style>
+</head>
+<body>
+<div class="bar">
+  <b>🪰 Hi! Fly Guy 高频词学习单（A4 可打印）</b>
+  <span class="hint">打印时会自动隐藏顶栏与参考答案；建议用浏览器「打印 / 另存为 PDF」</span>
+  <span>
+    <button onclick="toggleAns()">👁 显示/隐藏答案</button>
+    <button onclick="window.print()">🖨 打印 / 存为 PDF</button>
+  </span>
+</div>
+
+<!-- 第 1 页：词表 + 描红 -->
+<section class="sheet">
+  <div class="head">
+    <h1>Hi! Fly Guy · 高频词学习单 <span class="star">★</span></h1>
+    <div class="meta">小姨英语教育<br>适用：小学 1–4 年级<br>Sight Words 视读词</div>
+  </div>
+  <div class="nameline"><span>姓名 Name：</span><span>班级 Class：</span><span>日期 Date：</span></div>
+
+  <h2>一、高频词总表 Word List</h2>
+  <p class="note">读一读：先指读英文，再说中文。第 3 列照着浅色字描写一遍。</p>
+  <table id="wordTable">
+    <thead><tr><th style="width:22%">单词 Word</th><th style="width:28%">中文 Meaning</th><th style="width:50%">描写 Trace</th></tr></thead>
+    <tbody id="wtBody"></tbody>
+  </table>
+
+  <h2>二、描红练习 Trace the Words</h2>
+  <p class="note">沿着浅色字母描一遍，再在后面的横线上自己写一遍。</p>
+  <div class="trace-block" id="traceBlock"></div>
+
+  <div class="foot"><span>小姨英语教育 · Hi! Fly Guy</span><span>第 1 页 / 共 2 页</span></div>
+</section>
+
+<!-- 第 2 页：练习题 -->
+<section class="sheet page-break">
+  <div class="head">
+    <h1>Hi! Fly Guy · 高频词练习 <span class="star">★★</span></h1>
+    <div class="meta">小姨英语教育<br>姓名：____________</div>
+  </div>
+
+  <h2>三、连一连 Match（英文 — 中文）</h2>
+  <p class="note">用线把左边的英文和右边的中文连起来。</p>
+  <div class="match">
+    <div class="col" id="matchEn"></div>
+    <div class="col" id="matchZh"></div>
+  </div>
+  <div class="answer" id="matchAns"></div>
+
+  <h2>四、选词填空 Fill in the Blanks</h2>
+  <p class="note">从词库里选出正确的单词，写在横线上。</p>
+  <div class="wbank" id="bank"></div>
+  <ol id="fillList"></ol>
+  <div class="answer" id="fillAns"></div>
+
+  <h2>五、看中文写单词 Write the Word</h2>
+  <p class="note">根据中文意思，在横线上写出对应的英文单词。</p>
+  <div class="write-grid" id="writeGrid"></div>
+  <div class="answer" id="writeAns"></div>
+
+  <div class="foot"><span>小姨英语教育 · Hi! Fly Guy · 高频词依据 Dolch / Fry 视读词表（例句为原创）</span><span>第 2 页 / 共 2 页</span></div>
+</section>
+
+<script>
+const WORDS=[
+  {w:"a",zh:"一个",ex:"Buzz has a pet."},
+  {w:"the",zh:"这/那",ex:"The fly is happy."},
+  {w:"to",zh:"去/到",ex:"Buzz wants to play."},
+  {w:"he",zh:"他",ex:"He is a boy."},
+  {w:"for",zh:"为了/给",ex:"A pet for Buzz."},
+  {w:"can",zh:"能/会",ex:"Fly Guy can buzz."},
+  {w:"not",zh:"不",ex:"It is not a bee."},
+  {w:"up",zh:"向上",ex:"Fly Guy flies up."},
+  {w:"down",zh:"向下",ex:"Fly Guy flies down."},
+  {w:"look",zh:"看",ex:"Look at Fly Guy!"},
+  {w:"my",zh:"我的",ex:"Fly Guy is my pet."},
+  {w:"you",zh:"你",ex:"Can you see it?"},
+  {w:"in",zh:"在……里",ex:"Fly Guy is in a jar."},
+  {w:"is",zh:"是",ex:"Fly Guy is smart."},
+  {w:"are",zh:"是(复数)",ex:"We are friends."},
+  {w:"but",zh:"但是",ex:"Small, but smart."},
+  {w:"this",zh:"这个",ex:"This is Fly Guy."},
+  {w:"was",zh:"是(过去)",ex:"Buzz was happy."},
+  {w:"went",zh:"去了",ex:"Buzz went home."},
+  {w:"saw",zh:"看见了",ex:"Buzz saw a fly."},
+  {w:"what",zh:"什么",ex:"What is your name?"},
+  {w:"with",zh:"和…一起",ex:"Play with Fly Guy."},
+  {w:"said",zh:"说(过去)",ex:"Buzz said hi."},
+  {w:"his",zh:"他的",ex:"His pet can fly."},
+  {w:"know",zh:"知道",ex:"I know your name."},
+  {w:"away",zh:"离开",ex:"Fly Guy flew away."},
+  {w:"around",zh:"到处",ex:"It flew around."},
+  {w:"home",zh:"家",ex:"Buzz took it home."},
+  {w:"boy",zh:"男孩",ex:"The boy is Buzz."},
+  {w:"pet",zh:"宠物",ex:"Fly Guy is a pet."},
+  {w:"fly",zh:"苍蝇/飞",ex:"Fly Guy is a fly."},
+  {w:"name",zh:"名字",ex:"My name is Buzz."}
+];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+/* 词表 */
+const wt=document.getElementById('wtBody');
+WORDS.forEach(o=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="en">${o.w}</td><td>${o.zh}</td><td class="trace">${o.w}</td>`;
+  wt.appendChild(tr);
+});
+
+/* 描红块：取前 12 个最常用 */
+const tb=document.getElementById('traceBlock');
+shuffle(WORDS).slice(0,12).forEach(o=>{
+  const d=document.createElement('div'); d.className='trace-row';
+  d.innerHTML=`<span class="label">${o.w}</span><span class="ghost">${o.w}　${o.w}　${o.w}</span>`;
+  tb.appendChild(d);
+});
+
+/* 连一连：6 个 */
+const mset=shuffle(WORDS).slice(0,6);
+const enCol=document.getElementById('matchEn'), zhCol=document.getElementById('matchZh');
+mset.forEach(o=>{const d=document.createElement('div');d.className='en';d.textContent=o.w;enCol.appendChild(d);});
+shuffle(mset).forEach(o=>{const d=document.createElement('div');d.textContent=o.zh;zhCol.appendChild(d);});
+document.getElementById('matchAns').textContent='参考答案：'+mset.map(o=>o.w+'='+o.zh).join('；');
+
+/* 选词填空：6 题 */
+const fset=shuffle(WORDS).slice(0,6);
+document.getElementById('bank').innerHTML='词库 Word Bank：<b>'+shuffle(fset).map(o=>o.w).join(' / ')+'</b>';
+const fl=document.getElementById('fillList');
+fset.forEach(o=>{
+  const li=document.createElement('li');
+  const sent=o.ex.replace(new RegExp('\\b'+o.w+'\\b','i'),'<span class="blank"></span>');
+  li.innerHTML=`${sent} <span style="color:#999">（${o.zh}）</span>`;
+  fl.appendChild(li);
+});
+document.getElementById('fillAns').textContent='参考答案：'+fset.map((o,i)=>(i+1)+'.'+o.w).join('　');
+
+/* 看中文写单词：8 个 */
+const wset=shuffle(WORDS).slice(0,8);
+const wg=document.getElementById('writeGrid');
+wset.forEach(o=>{
+  const d=document.createElement('div'); d.className='item';
+  d.innerHTML=`<span class="zh">${o.zh}</span><span class="line"></span>`;
+  wg.appendChild(d);
+});
+document.getElementById('writeAns').textContent='参考答案：'+wset.map(o=>o.zh+'='+o.w).join('；');
+
+/* 答案显隐 */
+let showAns=false;
+function toggleAns(){ showAns=!showAns;
+  document.querySelectorAll('.answer').forEach(a=>a.style.display=showAns?'block':'none'); }
+document.querySelectorAll('.answer').forEach(a=>a.style.display='none');
+</script>
+</body>
+</html>
